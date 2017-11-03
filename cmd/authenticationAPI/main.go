@@ -8,6 +8,7 @@ package main
 // That file is the main of the API
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -23,8 +24,12 @@ func main() {
 	// Initialise the database
 	data.InitDatabase(configuration)
 
+	fmt.Print("Server configuration loaded {url:\"http://" + configuration.HostName + ":" + configuration.Port + "\", database:\"" + configuration.DatabaseName + "\"}")
+
 	// Initialise routing
 	router := router.NewAuthenticationRouter()
+
+	fmt.Print("Router initialized")
 
 	// Launch the server
 	log.Fatal(http.ListenAndServe(configuration.GetServerURL(), router))
