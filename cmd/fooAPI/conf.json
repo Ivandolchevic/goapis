@@ -1,0 +1,6 @@
+{
+    "databasename":"test",
+    "hostname":"localhost",
+    "port":"9090",
+    "logfolder":"E:\\WORKSPACE\\Temp"
+}

@@ -1,0 +1,21 @@
+{
+    "databasename": "authentication",
+    "hostname": "localhost",
+    "port": "8080",
+    "logfolder": "E:\\WORKSPACE\\Temp",
+    "optionsheaders":  [
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                },
+                {
+                    "key": "Access-Control-Allow-Methods",
+                    "value": "POST, GET, OPTIONS, PUT, DELETE"
+                },
+                {
+                    "key": "Access-Control-Allow-Headers",
+                    "value": "filter, token, Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization,Access-Control-Allow-Origin"
+                }
+            ]
+        
+}

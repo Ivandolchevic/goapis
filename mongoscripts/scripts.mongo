@@ -1,0 +1,20 @@
+// create the authentication database
+use authentication
+
+// create the basics collection for basic authentication
+db.createCollection('basics')
+
+// insert some values into basics
+db.basics.insert({login:"testuser@airbus.com", password:"pwdtestuser", application:"JohnDeereApp",origin:"localhost"})
+
+// create the accesstokens collection to store the access tokens
+db.accesstokens.insert({value:"OIAJD092KDZJ", limit:1508335659})
+
+// create the refreshtokens collection used to refresh the access token 
+db.refreshtokens.insert({value:"mlazdlazkdopk", limit:1508335659})
+
+// remove a value from basics
+db.basics.remove({_id:ObjectId("59df7760035077d9b8a887e6")})
+
+// create the biling database
+use biling
