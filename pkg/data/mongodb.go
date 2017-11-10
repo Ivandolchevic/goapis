@@ -2,6 +2,7 @@ package data
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 
 	"gopkg.in/mgo.v2"
@@ -12,18 +13,25 @@ import (
 
 // the current database
 var hostName string
-var databaseName string
+var port string
+var name string
+var login string
+var password string
 
 // InitDatabase initialise the database configuration
 func InitDatabase(configuration Configuration) {
-	hostName = configuration.HostName
-	databaseName = configuration.DatabaseName
+	hostName = configuration.Database.HostName
+	port = configuration.Database.Port
+	name = configuration.Database.Name
+	login = configuration.Database.Login
+	password = configuration.Database.Password
+
 }
 
 // Connect open a new session to the server and connect to the database
 func Connect() *mgo.Database {
 	// Open a session
-	session, err := mgo.Dial(hostName)
+	session, err := mgo.Dial(hostName + ":" + port)
 
 	// Optional. Switch the session to a monotonic behavior.
 	session.SetMode(mgo.Monotonic, true)
@@ -32,7 +40,16 @@ func Connect() *mgo.Database {
 		panic(err)
 	}
 
-	return session.DB(databaseName)
+	fmt.Println("login: " + login + ", password: " + password)
+
+	database := session.DB(name)
+
+	// login
+	if err := database.Login(login, password); err != nil {
+		panic(err)
+	}
+
+	return database
 }
 
 // Upsert update or insert an element from the database

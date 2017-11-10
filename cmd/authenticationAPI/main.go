@@ -24,12 +24,12 @@ func main() {
 	// Initialise the database
 	data.InitDatabase(configuration)
 
-	fmt.Print("Server configuration loaded {url:\"http://" + configuration.HostName + ":" + configuration.Port + "\", database:\"" + configuration.DatabaseName + "\"}")
+	fmt.Printf("Server configuration loaded {url:\"http://%s:%s\", database:\"%s\"}\n", configuration.API.HostName, configuration.API.Port, configuration.Database.Name)
 
 	// Initialise routing
 	router := router.NewAuthenticationRouter()
 
-	fmt.Print("Router initialized")
+	fmt.Println("Router initialized")
 
 	// Launch the server
 	log.Fatal(http.ListenAndServe(configuration.GetServerURL(), router))

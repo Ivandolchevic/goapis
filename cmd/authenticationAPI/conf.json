@@ -1,7 +1,15 @@
-{
-    "databasename": "authentication",
-    "hostname": "localhost",
-    "port": "8080",
+{        
+    "api":{
+        "hostname": "127.0.0.1",
+        "port": "8080"
+    },
+    "database":{
+        "hostname":"192.168.238.129",
+        "port":"27017",
+        "name": "authentication",    
+        "login": "authuser",
+        "password":"pwdauthuser"
+    },    
     "logfolder": "E:\\WORKSPACE\\Temp",
     "optionsheaders":  [
                 {
